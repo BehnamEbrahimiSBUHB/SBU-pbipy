@@ -45,19 +45,30 @@ def build_path(
     return path
 
 
-def to_snake_case(s):
-    pattern = re.compile("((?<=[a-z0-9])[A-Z]|(?!^)[A-Z](?=[a-z]))")
-    return pattern.sub(r"_\1", s).lower()
+def to_snake_case(s: str) -> str:
+    """Convert camelCase or PascalCase to snake_case."""
+    pattern = re.compile(r'((?<=[a-z0-9])[A-Z]|(?!^)[A-Z](?=[a-z]))')
+    return pattern.sub(r'_\1', s).lower()
 
 
-def to_camel_case(text):
-    s = text.replace("-", " ").replace("_", " ")
-    s = s.split()
+def to_camel_case(text: str) -> str:
+    """Convert kebab-case, snake_case or space separated text to camelCase.
 
-    if len(text) == 0:
+    Parameters
+    ----------
+    text : str
+        The text to convert to camelCase.
+
+    Returns
+    -------
+    str
+        The text in camelCase format.
+    """
+    if not text:
         return text
-
-    return s[0] + "".join(i.capitalize() for i in s[1:])
+        
+    words = text.replace("-", " ").replace("_", " ").split()
+    return words[0] + ''.join(word.capitalize() for word in words[1:])
 
 
 def remove_no_values(
@@ -251,15 +262,9 @@ def get(
     ------
     `Exception`
         If there was an error during the request process.
-
     """
-
-    try:
-        response = session.get(resource, params=params, **kwargs)
-        raise_error(response)
-    except Exception as ex:
-        raise ex
-
+    response = session.get(resource, params=params, **kwargs)
+    raise_error(response)
     return response
 
 
@@ -289,22 +294,9 @@ def get_raw(
     ------
     `Exception`
         If there was an error during the request process.
-
     """
-
-    try:
-        response = get(
-            resource,
-            session,
-            params,
-            **kwargs,
-        )
-        raw = response.json()
-
-        return parse_raw(raw)
-
-    except Exception as ex:
-        raise ex
+    response = get(resource, session, params, **kwargs)
+    return parse_raw(response.json())
 
 
 def post(

@@ -12,7 +12,7 @@ from pbipy.resources import Resource
 
 class Dashboard(Resource):
     """A Power BI Dashboard."""
-    
+
     _REPR = [
         "id",
         "display_name",

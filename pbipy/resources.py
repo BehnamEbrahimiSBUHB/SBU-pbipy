@@ -10,12 +10,12 @@ class Resource:
     """
     Represents a URL-addressable resource in the Power BI Rest API.
 
-    Resources are Power BI components such as Apps, Reports, Groups, 
+    Resources are Power BI components such as Apps, Reports, Groups,
     Datasets, etc. and closely mirror the REST Operation Groups here:
 
     https://learn.microsoft.com/en-us/rest/api/power-bi/
-    
-    Resources translate the JSON returned by the API into more user-friendly 
+
+    Resources translate the JSON returned by the API into more user-friendly
     Python representations.
 
     """

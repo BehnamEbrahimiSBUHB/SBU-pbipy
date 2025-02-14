@@ -1,0 +1,20 @@
+[project]
+name = "sbu-pbipy"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.2.3",
+    "pandas>=2.2.3",
+    "requests>=2.32.3",
+    "ruff>=0.9.6",
+]
+
+[tool.uv]
+cache-dir = "./.uv_cache"
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.29.5",
+]

@@ -1,5 +1,5 @@
 """
-Module implements a Power BI client that wraps around the Power BI Rest 
+Module implements a Power BI client that wraps around the Power BI Rest
 API.
 
 Full API documentation can be found at:
@@ -917,7 +917,7 @@ class PowerBI:
         ------
         `Exception`
             If an error was encountered during the import process.
-        
+
         See Also
         --------
         `PowerBI.import_large_file`
